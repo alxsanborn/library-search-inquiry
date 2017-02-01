@@ -3,6 +3,9 @@ function Library(title, author, year, isbn) {
   this.author = author,
   this.year = year,
   this.isbn = isbn,
+  this.result = function(){
+    return this
+  }
 }
 
 
