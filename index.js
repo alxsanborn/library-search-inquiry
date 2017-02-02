@@ -25,7 +25,6 @@ function Book(title, author, year, isbn) {
 // I'm going to go with the binary search, rather than the linear search for this particular case. If I were only iterating through 10 (or some other similarly small number) cases, I would just go with the linear case because there is less complexity in the search function and the number of iterations would be negligable. However, in this context, a library will contain hundred/thousands/millions of books to which a/user(s) will continue to add, and for this reason a binary search is better.
 
 function isbnBinarySearch(userIsbn) {
-  var start = new Date()
   library.sort(function(a, b){
     return a.isbn - b.isbn
   })
@@ -49,12 +48,41 @@ function isbnBinarySearch(userIsbn) {
 
 }
 
-function titleSearch(userTitle) {
-  for (var book = 0; book < library.length; book++){
-    if (library[book].title == userTitle) {
-     return library[book].result() //what if there is more than one book with the same title?
-   }
-  }
+// function titleSearch(userTitle) {
+//   for (var book = 0; book < library.length; book++){
+//     if (library[book].title == userTitle) {
+//      return library[book].result() //what if there is more than one book with the same title?
+//    }
+//   }
+// }
+
+function titleBinarySearch(userTitle){
+  library.sort(function(a, b){
+    if ( a.title < b.title )
+        return -1;
+    if ( a.title > b.title )
+        return 1;
+    return 0;
+  })
+
+  var low = 0,
+      high = library.length -1;
+
+      while (low <= high) {
+          mid = parseInt((low + high) / 2);
+          current = library[mid].title;
+
+          if (current > userTitle) {
+             high = mid - 1;
+           } else if (current < userTitle) {
+              low = mid + 1;
+            } else {
+              return library[mid]
+           }
+
+      }
+      return "No results found for title."
+
 }
 
 //Future: a function that returns a book by author? a function that returns all of the books published in a given year? should these all be separate functions or is there a way to DRY this out?
