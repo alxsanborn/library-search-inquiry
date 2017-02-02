@@ -5,9 +5,6 @@ function Book(title, author, year, isbn) {
   this.author = author;
   this.year = year;
   this.isbn = isbn;
-  this.result = function(){
-    return this
-  };
   library.push(this);
 }
 
@@ -17,7 +14,7 @@ function Book(title, author, year, isbn) {
 // function isbnSearch(userIsbn) {
 //  for (var book = 0; book < library.length; book++){
 //    if (library[book].isbn == userIsbn) {
-//     return library[book].result()
+//     return library[book]
 //   }
 //  }
 // return "No results found for ISBN."
@@ -51,7 +48,7 @@ function isbnBinarySearch(userIsbn) {
 // function titleSearch(userTitle) {
 //   for (var book = 0; book < library.length; book++){
 //     if (library[book].title == userTitle) {
-//      return library[book].result() //what if there is more than one book with the same title?
+//      return library[book] //what if there is more than one book with the same title?
 //    }
 //   }
 // }
