@@ -108,7 +108,7 @@ function phraseOptomization(searchPhrase) {
 
 function wordMatch(wordInput) {
   var matches = []
-  var regExPhrase = new RegExp(wordInput.join("|"), "gi")
+  var regExPhrase = new RegExp("(" + wordInput.join("|") + ")(s|es|d|ed|ing)*[^A-z]", "gi")
    for (var book = 0; book < library.length; book++) {
      if (library[book].title.match(regExPhrase)) {
        matches.push(library[book])
@@ -131,6 +131,7 @@ function returnTitleResults(searchTerm){
 
 //Future: a function that returns a book by author? a function that returns all of the books published in a given year? Should these all be separate functions or is there a way to DRY this out?
 
+//Seed data:
 var book1 = new Book("Cats", "Author", 1993, 444)
 var book2 = new Book("Dogs", "Author", 1995, 222)
 var book3 = new Book("How to Make Smoothies", "Author", 1278, 546)
