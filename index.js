@@ -108,13 +108,13 @@ function phraseOptomization(searchPhrase) {
 
 function wordMatch(wordInput) {
   var matches = []
-  var regExPhrase = new RegExp("(" + wordInput.join("|") + ")(s|es|d|ed|ing)*[^A-z]", "gi")
-   for (var book = 0; book < library.length; book++) {
-     if (library[book].title.match(regExPhrase)) {
-       matches.push(library[book])
-     }
-   }
-  return matches
+  var regExPhrase = new RegExp("(" + wordInput.join("|") + ")(s|es|d|ed|ing)*($|[^A-z])", "gi")
+    for (var book = 0; book < library.length; book++) {
+      if (library[book].title.match(regExPhrase)) {
+        matches.push(library[book])
+      }
+    }
+   return matches
 }
 
 function returnTitleResults(searchTerm){
