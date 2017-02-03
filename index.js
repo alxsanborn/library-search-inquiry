@@ -118,8 +118,8 @@ function wordMatch(wordInput) {
 }
 
 function returnTitleResults(searchTerm){
-  if (titleBinarySearch(searchTerm.toLowerCase()) == -1) {
-      var splitPhrase = searchTerm.split(" ")
+  if (titleBinarySearch(searchTerm.toLowerCase().trim()) == -1) {
+      var splitPhrase = searchTerm.trim().split(" ")
 
       return wordMatch(phraseOptomization(splitPhrase))
   } else {
